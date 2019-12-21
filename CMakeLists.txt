@@ -18,5 +18,5 @@ function(add_resource target key path)
 endfunction()
 
 # use this variable to be able to read Resource.h
-set(CPP_RESOURCE_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" PARENT_SCOPE)
+set(CPP_RESOURCE_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE INTERNAL "CPP_RESOURCE_INCLUDE_DIR")
 

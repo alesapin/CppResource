@@ -26,8 +26,7 @@ void writeData(std::ofstream & ofs, std::ifstream & ifs)
     size_t real_lenth;
     while ((real_lenth = ifs.gcount()))
     {
-        size_t should_decrease = real_lenth < BUFFER_LENGTH;
-        for (size_t i = 0; i < real_lenth - should_decrease; ++i)
+        for (size_t i = 0; i < real_lenth; ++i)
         {
             int repr = (unsigned char)(buffer[i]);
             ofs << "0x" <<  std::hex << std::setw(2) << std::setfill('0') << repr << ", ";
