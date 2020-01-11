@@ -10,11 +10,11 @@ add_executable(generator generator.cpp)
 # allows to add file as binary blob to executable
 function(add_resource target key path)
     add_custom_command(
-      OUTPUT "${key}.cpp"
-      COMMAND generator ${key} ${path}
+      OUTPUT "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${key}.cpp"
+      COMMAND generator ${key} ${path} "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}"
       DEPENDS generator)
 
-    target_sources(${target} PRIVATE "${key}.cpp")
+    target_sources(${target} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${key}.cpp")
 endfunction()
 
 # use this variable to be able to read Resource.h

@@ -53,16 +53,17 @@ void writeSuffix(std::ofstream & ofs, const std::string & key, const std::string
 
 int main(int argc, char ** argv)
 {
-    if (argc != 3)
+    if (argc != 4)
     {
         std::cerr << "USAGE: " << argv[0] << " key_name path_to_file\n\n"
                   << "Creates (random_name).cpp from the contents of path_to_file\n";
     }
     std::string key_name(argv[1]);
     std::string path(argv[2]);
+    std::string output_path(argv[3]);
     std::string result_name = key_name;
     std::ifstream ifs(path, std::ios::binary);
-    std::ofstream ofs(result_name + ".cpp",  std::ios::binary);
+    std::ofstream ofs(output_path + "/" + result_name + ".cpp",  std::ios::binary);
     writePrefix(ofs, result_name);
     writeData(ofs, ifs);
     writeSuffix(ofs, key_name, result_name);
